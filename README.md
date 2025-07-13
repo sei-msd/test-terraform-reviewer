@@ -1,6 +1,6 @@
 # Terraform Reviewer Demo Project
 
-This is a sample project demonstrating how to use the [terraform-reviewer](https://github.com/seii-saintway/terraform-reviewer) GitHub Action for automated Terraform code reviews.
+This is a simple sample project demonstrating how to use the [terraform-reviewer](https://github.com/seii-saintway/terraform-reviewer) GitHub Action for automated Terraform code reviews.
 
 ## Project Structure
 
@@ -17,14 +17,9 @@ This is a sample project demonstrating how to use the [terraform-reviewer](https
 
 ## Infrastructure Overview
 
-This project creates a basic AWS infrastructure including:
+This project creates a minimal AWS infrastructure for testing:
 
-- **VPC** with public and private subnets across multiple AZs
-- **Internet Gateway** for public internet access
-- **Application Load Balancer** for distributing traffic
-- **Security Groups** with appropriate ingress/egress rules
-- **S3 Bucket** with encryption and versioning enabled
-- **Route Tables** and associations for network routing
+- **S3 Bucket** - Simple storage bucket with random suffix for uniqueness
 
 ## Prerequisites
 
@@ -64,7 +59,7 @@ Create an IAM role for GitHub Actions OIDC with the following trust policy:
 
 Attach the following policies to the role:
 - `AmazonBedrockFullAccess` (or create a custom policy with minimal required permissions)
-- Custom policy for Terraform operations (EC2, VPC, S3, etc.)
+- Custom policy for Terraform operations (S3, etc.)
 
 ### 2. Enable Amazon Bedrock Models
 
@@ -85,17 +80,9 @@ Add the following secret to your GitHub repository:
 2. Customize the variables according to your needs:
 
 ```hcl
-aws_region     = "ap-northeast-1"
-project_name   = "my-terraform-project"
-environment    = "dev"
-vpc_cidr       = "10.0.0.0/16"
-
-availability_zones = [
-  "ap-northeast-1a",
-  "ap-northeast-1c"
-]
-
-enable_deletion_protection = false
+aws_region   = "ap-northeast-1"
+project_name = "my-terraform-project"
+environment  = "dev"
 ```
 
 ## How It Works
@@ -164,9 +151,9 @@ Available models:
 
 ### Adding More Resources
 
-To extend this example:
+This is a minimal test project with just an S3 bucket. To extend this example:
 
-1. Add new resources to `main.tf`
+1. Add new AWS resources to `main.tf` 
 2. Define any new variables in `variables.tf`
 3. Add outputs in `outputs.tf`
 4. Update documentation
@@ -193,10 +180,10 @@ To extend this example:
 
 ## Contributing
 
-Feel free to modify this example project to suit your needs. Some ideas for improvements:
+Feel free to modify this simple test project to suit your needs. Some ideas for improvements:
 
-- Add RDS database configuration
-- Include ECS/EKS for container orchestration
+- Add more AWS resources (EC2, RDS, VPC, etc.)
+- Include security configurations
 - Add CloudWatch monitoring and alerting
 - Implement multi-environment setup
 - Add automated testing with terraform-compliance
