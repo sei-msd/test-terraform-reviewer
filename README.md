@@ -171,7 +171,7 @@ This is a minimal test project with just an S3 bucket. To extend this example:
 - **Check**: Model is available in ap-northeast-1 region
 
 **Issue**: "Plan file not found"
-- **Solution**: Ensure terraform plan generates plan.out file
+- **Solution**: Ensure terraform plan generates plan.txt file
 - **Check**: Terraform init and validate steps succeed
 
 **Issue**: "GitHub token permissions insufficient"

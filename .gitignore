@@ -31,7 +31,7 @@ terraform.rc
 
 # Ignore plan output files
 *.out
-plan.out
+plan.txt
 
 # Ignore lock file changes during development
 .terraform.lock.hcl
